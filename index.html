@@ -14,26 +14,27 @@
     <link rel="stylesheet" href="styles/orbit.css">
 </head>
 <body>
-    <div id="app-container">
-        
-        <div id="splash-screen" class="screen active"><div class="splash-content"><h1 class="glow-text">QUEENTRESS</h1><p class="subtitle">Your Cosmic Emotional Universe</p><div class="loading-pulse"></div></div></div>
-
-        <div id="welcome-screen" class="screen"><div class="content-wrapper"><h2 class="glow-text" style="font-size: 2rem;">Discover Your Galaxy</h2><p class="subtitle">A safe space for your memories, dreams, and emotions.</p><button class="btn-primary" onclick="showAuth('register')">Create Universe</button><button class="btn-secondary" onclick="showAuth('login')">Enter Universe</button></div></div>
-        <div id="profile-setup-screen" class="screen">
+           <div id="profile-setup-screen" class="screen">
             <div class="glass-box">
                 <div class="profile-avatar-placeholder"><span id="avatar-initial">🌌</span></div>
                 <h2 class="glow-text" style="font-size: 1.5rem; margin-top: 15px;">Shape Your Universe</h2>
                 <p class="subtitle" style="margin-bottom: 20px;">Every star has an origin.</p>
-                <form id="profile-form" onsubmit="event.preventDefault(); showScreen('universe-screen'); document.getElementById('main-bottom-nav').classList.remove('nav-hidden');">
-                    <input type="text" id="display-name" class="input-field" placeholder="Display Name" required>
+                <form onsubmit="event.preventDefault(); document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById('universe-screen').classList.add('active'); document.getElementById('main-bottom-nav').classList.remove('nav-hidden');">
+                    <input type="text" class="input-field" placeholder="Display Name" required>
                     <div style="text-align: left; margin-bottom: 15px;">
-                        <label for="dob" style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-left: 5px;">Your Origin Date</label>
-                        <input type="date" id="dob" class="input-field" style="margin-top: 5px;" required>
+                        <label style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-left: 5px;">Your Origin Date</label>
+                        <input type="date" class="input-field" style="margin-top: 5px;" required>
                     </div>
                     <button type="submit" class="btn-primary">Ignite Universe</button>
                 </form>
             </div>
         </div>
+ 
+    <div id="app-container">
+        
+        <div id="splash-screen" class="screen active"><div class="splash-content"><h1 class="glow-text">QUEENTRESS</h1><p class="subtitle">Your Cosmic Emotional Universe</p><div class="loading-pulse"></div></div></div>
+
+        <div id="welcome-screen" class="screen"><div class="content-wrapper"><h2 class="glow-text" style="font-size: 2rem;">Discover Your Galaxy</h2><p class="subtitle">A safe space for your memories, dreams, and emotions.</p><button class="btn-primary" onclick="showAuth('register')">Create Universe</button><button class="btn-secondary" onclick="showAuth('login')">Enter Universe</button></div></
 
         <div id="auth-screen" class="screen"><div class="glass-box"><h2 id="auth-title" class="glow-text" style="font-size: 1.8rem;">Enter Universe</h2><p id="auth-subtitle" class="subtitle" style="margin-bottom: 20px;">Welcome back, traveler.</p><form id="auth-form" onsubmit="handleAuth(event)"><input type="text" id="username" class="input-field" placeholder="Cosmic Name" required><input type="password" id="password" class="input-field" placeholder="Secret Key" required><button type="submit" class="btn-primary" id="auth-submit-btn">Login</button></form><p class="switch-auth"><span id="auth-switch-text">New traveler?</span> <span class="text-link" onclick="toggleAuthMode()" id="auth-switch-link">Create Universe</span></p><span class="text-link btn-back" onclick="showScreen('welcome-screen')">← Back to Cosmos</span></div></
         <div id="universe-screen" class="screen">
