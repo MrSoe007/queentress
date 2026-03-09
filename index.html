@@ -9,13 +9,16 @@
 <body>
     <div id="app-container">
         <div id="splash-screen" class="screen active">
-            <div class="splash-content"><h1 class="glow-text">QUEENTRESS</h1><div class="loading-pulse"></div></div>
+            <div class="splash-content">
+                <h1 class="glow-text">QUEENTRESS</h1>
+                <div class="loading-pulse"></div>
+            </div>
         </div>
 
         <div id="profile-setup-screen" class="screen">
             <div class="glass-box">
                 <h2 class="glow-text">Shape Your Universe</h2>
-                <form onsubmit="event.preventDefault(); showScreen('universe-screen'); document.getElementById('main-bottom-nav').classList.remove('nav-hidden');">
+                <form onsubmit="event.preventDefault(); showScreen('universe-screen'); document.getElementById('main-bottom-nav').style.display = 'flex';">
                     <input type="text" class="input-field" placeholder="Cosmic Name" required>
                     <input type="date" class="input-field" required>
                     <button type="submit" class="btn-primary">Ignite Universe</button>
@@ -26,17 +29,18 @@
         <div id="universe-screen" class="screen">
             <div class="map-container">
                 <img src="assets/icons/universe-bg.jpg" alt="Universe Map" class="interactive-map">
-                <div class="hotspot" style="top: 30%; left: 15%;" onclick="showScreen('memory-galaxy-screen')"><span class="hotspot-label">Memories</span></div>
-                <div class="hotspot" style="top: 25%; left: 75%;" onclick="showScreen('time-capsule-screen')"><span class="hotspot-label">Time Vault</span></div>
+                <div class="hotspot" style="top: 35%; left: 20%;" onclick="alert('Memory Galaxy Coming Soon!')">
+                    <span class="hotspot-label">Memories</span>
+                </div>
+                <div class="hotspot" style="top: 30%; left: 70%;" onclick="alert('Time Vault Coming Soon!')">
+                    <span class="hotspot-label">Time Vault</span>
+                </div>
             </div>
         </div>
 
-        <div id="memory-galaxy-screen" class="screen"><h2>Memory Galaxy</h2><button onclick="showScreen('universe-screen')">Back</button></div>
-        <div id="time-capsule-screen" class="screen"><h2>Time Vault</h2><button onclick="showScreen('universe-screen')">Back</button></div>
-
-        <nav class="bottom-nav nav-hidden" id="main-bottom-nav">
+        <nav class="bottom-nav" id="main-bottom-nav" style="display: none;">
             <div class="nav-item" onclick="showScreen('universe-screen')">🌌 Universe</div>
-            <div class="nav-item" onclick="showScreen('memory-galaxy-screen')">⭐ Memories</div>
+            <div class="nav-item" onclick="alert('Available in Full Version')">⭐ Memories</div>
         </nav>
     </div>
 
