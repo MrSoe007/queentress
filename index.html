@@ -3,127 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>QUEENTRESS - Cosmic Emotional Universe</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>QUEENTRESS - Cosmic Universe</title>
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/universe.css">
-    <link rel="stylesheet" href="styles/galaxy.css">
-    <link rel="stylesheet" href="styles/orbit.css">
 </head>
 <body>
-           <div id="profile-setup-screen" class="screen">
+    <div id="app-container">
+        <div id="splash-screen" class="screen active">
+            <div class="splash-content"><h1 class="glow-text">QUEENTRESS</h1><div class="loading-pulse"></div></div>
+        </div>
+
+        <div id="profile-setup-screen" class="screen">
             <div class="glass-box">
-                <div class="profile-avatar-placeholder"><span id="avatar-initial">🌌</span></div>
-                <h2 class="glow-text" style="font-size: 1.5rem; margin-top: 15px;">Shape Your Universe</h2>
-                <p class="subtitle" style="margin-bottom: 20px;">Every star has an origin.</p>
-                <form onsubmit="event.preventDefault(); document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById('universe-screen').classList.add('active'); document.getElementById('main-bottom-nav').classList.remove('nav-hidden');">
-                    <input type="text" class="input-field" placeholder="Display Name" required>
-                    <div style="text-align: left; margin-bottom: 15px;">
-                        <label style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-left: 5px;">Your Origin Date</label>
-                        <input type="date" class="input-field" style="margin-top: 5px;" required>
-                    </div>
+                <h2 class="glow-text">Shape Your Universe</h2>
+                <form onsubmit="event.preventDefault(); showScreen('universe-screen'); document.getElementById('main-bottom-nav').classList.remove('nav-hidden');">
+                    <input type="text" class="input-field" placeholder="Cosmic Name" required>
+                    <input type="date" class="input-field" required>
                     <button type="submit" class="btn-primary">Ignite Universe</button>
                 </form>
             </div>
         </div>
- 
-    <div id="app-container">
-        
-        <div id="splash-screen" class="screen active"><div class="splash-content"><h1 class="glow-text">QUEENTRESS</h1><p class="subtitle">Your Cosmic Emotional Universe</p><div class="loading-pulse"></div></div></div>
 
-        <div id="welcome-screen" class="screen"><div class="content-wrapper"><h2 class="glow-text" style="font-size: 2rem;">Discover Your Galaxy</h2><p class="subtitle">A safe space for your memories, dreams, and emotions.</p><button class="btn-primary" onclick="showAuth('register')">Create Universe</button><button class="btn-secondary" onclick="showAuth('login')">Enter Universe</button></div></
-
-        <div id="auth-screen" class="screen"><div class="glass-box"><h2 id="auth-title" class="glow-text" style="font-size: 1.8rem;">Enter Universe</h2><p id="auth-subtitle" class="subtitle" style="margin-bottom: 20px;">Welcome back, traveler.</p><form id="auth-form" onsubmit="handleAuth(event)"><input type="text" id="username" class="input-field" placeholder="Cosmic Name" required><input type="password" id="password" class="input-field" placeholder="Secret Key" required><button type="submit" class="btn-primary" id="auth-submit-btn">Login</button></form><p class="switch-auth"><span id="auth-switch-text">New traveler?</span> <span class="text-link" onclick="toggleAuthMode()" id="auth-switch-link">Create Universe</span></p><span class="text-link btn-back" onclick="showScreen('welcome-screen')">← Back to Cosmos</span></div></
         <div id="universe-screen" class="screen">
-            <div id="universe-container" style="display: none;"></div>
-            <canvas id="universe-canvas" style="display: none;"></canvas>
-
             <div class="map-container">
-                <img src="assets/images/universe-bg.jpg" alt="Universe Map" class="interactive-map">
-                
-                <div class="hotspot" id="nav-memories" style="top: 30%; left: 15%;" onclick="showScreen('memory-galaxy-screen')">
-                    <span class="hotspot-label">Galaxy of Memories</span>
-                </div>
-                
-                <div class="hotspot" id="nav-capsule" style="top: 25%; left: 75%;" onclick="showScreen('time-capsule-screen')">
-                    <span class="hotspot-label">Time Capsule Nebula</span>
-                </div>
-                
-                <div class="hotspot" id="nav-growth" style="top: 15%; left: 45%;" onclick="showScreen('dream-planet-screen')">
-                    <span class="hotspot-label">Eternal Growth</span>
-                </div>
+                <img src="assets/icons/universe-bg.jpg" alt="Universe Map" class="interactive-map">
+                <div class="hotspot" style="top: 30%; left: 15%;" onclick="showScreen('memory-galaxy-screen')"><span class="hotspot-label">Memories</span></div>
+                <div class="hotspot" style="top: 25%; left: 75%;" onclick="showScreen('time-capsule-screen')"><span class="hotspot-label">Time Vault</span></div>
             </div>
         </div>
 
-        <div id="memory-galaxy-screen" class="screen"><div class="galaxy-bg"><div class="star-layer layer-1"></div><div class="star-layer layer-2"></div></div><div class="screen-header"><h2 class="glow-text" style="font-size: 1.5rem;">Memory Galaxy</h2><p class="subtitle" style="margin-bottom: 0;">Your constellation of moments</p><button class="btn-secondary" style="width: auto; padding: 5px 15px; font-size: 0.8rem; margin-top: 10px; border-color: rgba(255,255,255,0.3);" onclick="showScreen('universe-screen')">← Back to Map</button></div><div id="star-container" class="star-container"></div><button class="fab-btn" onclick="openMemoryCreator()">+</button><div id="memory-modal" class="modal-overlay"><div class="glass-box modal-box"><h3 class="glow-text" style="font-size: 1.3rem;">Capture a Moment</h3><form id="memory-form" onsubmit="saveMemory(event)"><input type="text" id="memory-title" class="input-field" placeholder="Name this star" required><textarea id="memory-desc" class="input-field" placeholder="What happened?" rows="3" required></textarea><div style="display: flex; gap: 10px;"><button type="submit" class="btn-primary">Save Star</button><button type="button" class="btn-secondary" onclick="closeMemoryCreator()">Cancel</button></div></form></div></div></div>
-
-        <div id="dream-planet-screen" class="screen"><div class="galaxy-bg"><div class="star-layer layer-1"></div><div class="star-layer layer-3"></div></div><div class="screen-header"><h2 class="glow-text" style="font-size: 1.5rem; color: #f7a8b8;">Dream Universe</h2><p class="subtitle" style="margin-bottom: 0;">Planets of your aspirations</p><button class="btn-secondary" style="width: auto; padding: 5px 15px; font-size: 0.8rem; margin-top: 10px; border-color: #f7a8b8; color: #f7a8b8;" onclick="showScreen('universe-screen')">← Back to Map</button></div><div id="planet-container" class="planet-container"></div><button class="fab-btn" style="background: linear-gradient(45deg, #f7a8b8, #ffc3a0);" onclick="openDreamCreator()">+</button><div id="dream-modal" class="modal-overlay"><div class="glass-box modal-box" style="border-color: rgba(247, 168, 184, 0.3);"><h3 class="glow-text" style="font-size: 1.3rem; color: #f7a8b8;">Forge a Planet</h3><form id="dream-form" onsubmit="saveDream(event)"><input type="text" id="dream-title" class="input-field" placeholder="Planet Name" required><select id="dream-type" class="input-field" required style="appearance: none;"><option value="" disabled selected>Select Planet Type...</option><option value="career">Career (Blue Planet)</option><option value="travel">Travel (Green Planet)</option><option value="relationship">Relationship (Pink Planet)</option></select><div style="display: flex; gap: 10px; margin-top: 10px;"><button type="submit" class="btn-primary" style="background: linear-gradient(45deg, #f7a8b8, #ffc3a0);">Create Planet</button><button type="button" class="btn-secondary" style="border-color: #f7a8b8; color: #f7a8b8;" onclick="closeDreamCreator()">Cancel</button></div></form></div></div></div>
-
-        <div id="emotion-tracker-screen" class="screen">
-            <div class="galaxy-bg"><div class="star-layer layer-1"></div></div>
-            <div class="screen-header"><h2 class="glow-text" style="font-size: 1.5rem; color: #a18cd1;">Emotion Cosmos</h2><p class="subtitle" style="margin-bottom: 0;">Map your inner feelings</p></div>
-            <div class="glass-box" style="margin-top: 20px; width: 100%; max-width: 400px; padding: 20px;">
-                <h3 style="color: white; margin-bottom: 15px; font-size: 1rem;">How is your universe today?</h3>
-                <div class="emotion-selector">
-                    <div class="emotion-orb orb-happy" onclick="selectEmotion('happy', this)">😊</div>
-                    <div class="emotion-orb orb-calm" onclick="selectEmotion('calm', this)">😌</div>
-                    <div class="emotion-orb orb-sad" onclick="selectEmotion('sad', this)">😢</div>
-                    <div class="emotion-orb orb-angry" onclick="selectEmotion('angry', this)">😡</div>
-                </div>
-                <input type="hidden" id="selected-emotion" value="">
-                <input type="text" id="emotion-note" class="input-field" style="margin-top: 15px; padding: 10px;" placeholder="Why do you feel this way? (Optional)">
-                <button class="btn-primary" style="padding: 10px; margin-top: 5px; background: linear-gradient(45deg, #a18cd1, #fbc2eb);" onclick="saveEmotion()">Log Emotion</button>
-            </div>
-            <div id="emotion-timeline" style="width: 100%; max-width: 400px; margin-top: 20px; padding-bottom: 50px;"></div>
-        </div>
-
-        <div id="relationship-universe-screen" class="screen">
-            <div class="galaxy-bg"><div class="star-layer layer-1"></div><div class="star-layer layer-2"></div></div>
-            <div class="screen-header"><h2 class="glow-text" style="font-size: 1.5rem; color: #ff9a9e;">Cosmic Connection</h2><p class="subtitle" style="margin-bottom: 0;">Merge your universes</p></div>
-            <div class="connection-container" style="margin-top: 20px;">
-                <div class="partner-card"><div class="avatar-large" id="my-relation-avatar">🌌</div><span class="glow-text" style="font-size: 1rem; text-shadow: none;">You</span></div>
-                <div class="connection-link"><div class="pulse-line"></div><span style="font-size: 1.5rem; z-index: 2;">❤️</span></div>
-                <div class="partner-card" id="partner-slot"><div class="avatar-large empty-slot" onclick="openInviteModal()">+</div><span style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">Awaiting Partner</span></div>
-            </div>
-            <div class="glass-box shared-stats-box" style="margin-top: 20px;"><div><h3 style="color: #ffd700;">0</h3><p>Shared Stars</p></div><div><h3 style="color: #f7a8b8;">0</h3><p>Shared Planets</p></div><div><h3 style="color: #a18cd1;">0</h3><p>Sync Days</p></div></div>
-            <button class="btn-primary" style="margin-top: 20px; background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #050510;" onclick="openInviteModal()">Invite Partner</button>
-            <div id="invite-modal" class="modal-overlay"><div class="glass-box modal-box" style="border-color: rgba(255, 154, 158, 0.4);"><h3 class="glow-text" style="font-size: 1.3rem; color: #ff9a9e;">Invite to Universe</h3><p style="color: white; margin-bottom: 15px; font-size: 0.9rem;">Share this cosmic code to merge your universes.</p><div class="invite-code-display">QT-8402</div><button class="btn-primary" style="margin-top: 0; background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #050510;" onclick="closeInviteModal()">Copy & Close</button></div></div>
-        </div>
-
-        <div id="time-capsule-screen" class="screen">
-            <div class="galaxy-bg"><div class="star-layer layer-2"></div></div>
-            <div class="screen-header"><h2 class="glow-text" style="font-size: 1.5rem; color: #b8c6db;">Time Vault</h2><p class="subtitle" style="margin-bottom: 0;">Messages to the future</p><button class="btn-secondary" style="width: auto; padding: 5px 15px; font-size: 0.8rem; margin-top: 10px; border-color: #b8c6db;" onclick="showScreen('universe-screen')">← Back to Map</button></div>
-            <div class="glass-box" style="margin-top: 30px; width: 100%; max-width: 400px; padding: 20px;">
-                <h3 style="color: white; margin-bottom: 15px; font-size: 1rem;">Seal a New Message</h3>
-                <form id="capsule-form" onsubmit="saveCapsule(event)">
-                    <input type="text" id="capsule-title" class="input-field" placeholder="Capsule Title" required>
-                    <textarea id="capsule-message" class="input-field" placeholder="Write your future message..." rows="3" required></textarea>
-                    <div style="text-align: left; margin-bottom: 15px;"><label style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-left: 5px;">Unlock Date</label><input type="date" id="capsule-date" class="input-field" style="margin-top: 5px;" required></div>
-                    <button type="submit" class="btn-primary" style="background: linear-gradient(45deg, #b8c6db, #f5f7fa); color: #050510; box-shadow: 0 4px 15px rgba(184, 198, 219, 0.4);">Seal Capsule 🔒</button>
-                </form>
-            </div>
-            <div id="capsule-list" style="width: 100%; max-width: 400px; margin-top: 20px; padding-bottom: 50px;"></div>
-        </div>
+        <div id="memory-galaxy-screen" class="screen"><h2>Memory Galaxy</h2><button onclick="showScreen('universe-screen')">Back</button></div>
+        <div id="time-capsule-screen" class="screen"><h2>Time Vault</h2><button onclick="showScreen('universe-screen')">Back</button></div>
 
         <nav class="bottom-nav nav-hidden" id="main-bottom-nav">
-            <div class="nav-item active" onclick="showScreen('universe-screen')"><span class="nav-icon">🌌</span><span class="nav-label">Universe</span></div>
-            <div class="nav-item" onclick="showScreen('memory-galaxy-screen')"><span class="nav-icon">⭐</span><span class="nav-label">Memories</span></div>
-            <div class="nav-item" onclick="showScreen('dream-planet-screen')"><span class="nav-icon">🪐</span><span class="nav-label">Dreams</span></div>
-            <div class="nav-item" onclick="showScreen('emotion-tracker-screen')"><span class="nav-icon">❤️</span><span class="nav-label">Emotions</span></div>
-            <div class="nav-item" onclick="showScreen('relationship-universe-screen')"><span class="nav-icon">👥</span><span class="nav-label">Relations</span></div>
+            <div class="nav-item" onclick="showScreen('universe-screen')">🌌 Universe</div>
+            <div class="nav-item" onclick="showScreen('memory-galaxy-screen')">⭐ Memories</div>
         </nav>
     </div>
 
     <script src="core/ui_manager.js"></script>
-    <script src="core/universe_engine.js"></script>
-    <script src="modules/memories/memory_engine.js"></script>
-    <script src="modules/dream/dream_engine.js"></script>
-    <script src="modules/emotions/emotion_engine.js"></script>
-    <script src="modules/relationships/connection_manager.js"></script>
-    <script src="modules/time/orbit_engine.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
