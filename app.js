@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("App Started...");
-    // Force move from Splash to Welcome after 3 seconds
+    // ၃ စက္ကန့်အကြာတွင် Welcome Screen သို့ အလိုအလျောက် သွားမည်
     setTimeout(() => {
         showScreen('welcome-screen');
     }, 3000);
