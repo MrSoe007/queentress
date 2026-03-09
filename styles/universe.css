@@ -1,0 +1,49 @@
+/* ========================================= */
+/* 2. UNIVERSE UI COMPONENTS                 */
+/* ========================================= */
+/* Box တွေ အပေါ်ကို ပြတ်မထွက်အောင် Margin အသစ် ချိန်ထားသည် */
+.content-wrapper { 
+    text-align: center; width: 100%; max-width: 400px; 
+    margin: 20px auto 0 auto; 
+    animation: fadeIn 1s ease-in-out; 
+}
+
+.glass-box { 
+    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px 20px; 
+    width: 100%; max-width: 350px; text-align: center; 
+    margin: 20px auto 0 auto; 
+    animation: fadeIn 0.5s ease-in-out; 
+}
+
+
+.glow-text { font-size: 2.5rem; letter-spacing: 4px; color: #fff; text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color); margin-bottom: 12px; }
+.subtitle { font-size: 1rem; color: var(--accent-color); letter-spacing: 1px; opacity: 0.8; margin-bottom: 25px; }
+
+/* Forms & Buttons */
+.btn-primary, .btn-secondary { width: 100%; padding: 15px; margin: 10px auto; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; border: none; transition: all 0.3s; }
+.btn-primary { background: linear-gradient(45deg, var(--glow-color), var(--accent-color)); color: white; box-shadow: 0 4px 15px rgba(179, 136, 235, 0.4); }
+.btn-secondary { background: transparent; color: white; border: 2px solid var(--glow-color); }
+.btn-primary:active, .btn-secondary:active { transform: scale(0.95); }
+
+.input-field { width: 100%; padding: 15px; margin-bottom: 15px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; color: white; font-size: 1rem; outline: none; }
+.input-field::placeholder { color: rgba(255, 255, 255, 0.5); }
+.input-field:focus { border-color: var(--glow-color); box-shadow: 0 0 10px rgba(179, 136, 235, 0.3); }
+input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+textarea.input-field { resize: none; font-family: inherit; }
+
+/* Specific UI */
+.switch-auth { margin-top: 20px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
+.text-link { color: var(--accent-color); cursor: pointer; font-weight: bold; text-decoration: underline; }
+.btn-back { display: inline-block; margin-top: 25px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); text-decoration: none; }
+.profile-avatar-placeholder { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--bg-deep-space), var(--glow-color)); margin: 0 auto 15px auto; display: flex; justify-content: center; align-items: center; font-size: 2.5rem; border: 2px solid var(--accent-color); box-shadow: 0 0 15px rgba(247, 168, 184, 0.4); color: white; }
+
+/* Modals & Bottom Nav */
+.modal-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 16, 0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 1000; }
+.modal-overlay.active { display: flex; justify-content: center; align-items: center; }
+.fab-btn { position: absolute; bottom: 100px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(45deg, var(--glow-color), var(--accent-color)); color: white; font-size: 2.5rem; font-weight: 300; border: none; box-shadow: 0 4px 15px rgba(179, 136, 235, 0.5); cursor: pointer; z-index: 20; display: flex; justify-content: center; align-items: center; line-height: 1; }
+.bottom-nav { position: absolute; bottom: 0; left: 0; width: 100%; height: 80px; background: rgba(5, 5, 16, 0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-around; align-items: center; padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 100; }
+.nav-item { display: flex; flex-direction: column; align-items: center; color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: all 0.3s ease; }
+.nav-icon { font-size: 1.5rem; margin-bottom: 5px; } .nav-label { font-size: 0.7rem; }
+.nav-item.active { color: var(--glow-color); transform: translateY(-5px); }
+.nav-item.active .nav-icon { text-shadow: 0 0 10px var(--glow-color); }
