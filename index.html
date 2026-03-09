@@ -24,7 +24,23 @@
 
         <div id="profile-setup-screen" class="screen"><div class="glass-box"><div class="profile-avatar-placeholder"><span id="avatar-initial">🌌</span></div><h2 class="glow-text" style="font-size: 1.5rem; margin-top: 15px;">Shape Your Universe</h2><p class="subtitle" style="margin-bottom: 20px;">Every star has an origin.</p><form id="profile-form" onsubmit="handleProfileSetup(event)"><input type="text" id="display-name" class="input-field" placeholder="Display Name" required oninput="updateAvatar()"><div style="text-align: left; margin-bottom: 15px;"><label for="dob" style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-left: 5px;">Your Origin Date</label><input type="date" id="dob" class="input-field" style="margin-top: 5px;" required></div><button type="submit" class="btn-primary">Ignite Universe</button></form></div></div>
 
-        <div id="universe-dashboard-screen" class="screen"><div class="galaxy-bg"><div class="star-layer layer-1"></div><div class="star-layer layer-2"></div><div class="star-layer layer-3"></div></div><div class="dashboard-header"><div class="user-greeting"><div class="avatar-mini" id="dash-avatar-initial">🌌</div><span id="dash-username" class="glow-text" style="font-size: 1.2rem; letter-spacing: 2px; text-shadow: none;">Traveler</span></div><div class="orbit-clock-mini" onclick="showScreen('time-capsule-screen')"><span style="font-size: 0.7rem; color: var(--accent-color);">Orbit Age (Tap for Vault)</span><br><span id="dash-orbit-time">0.0</span></div></div><div class="core-universe-container"><div class="center-core pulse-glow"><span>Destiny</span></div><div class="orbit-ring ring-1"><div class="planet memory-planet" onclick="alert('Warping to Memory Galaxy... 🌟')"></div></div><div class="orbit-ring ring-2"><div class="planet dream-planet" onclick="alert('Warping to Dream Planets... 🪐')"></div></div></div></div>
+                <div id="universe-screen" class="screen">
+            <div class="map-container">
+                <img src="assets/images/universe-bg.jpg" alt="Universe Map" class="interactive-map">
+                
+                <div class="hotspot" id="nav-memories" style="top: 30%; left: 15%;">
+                    <span class="hotspot-label">Galaxy of Memories</span>
+                </div>
+                
+                <div class="hotspot" id="nav-capsule" style="top: 25%; left: 75%;">
+                    <span class="hotspot-label">Time Capsule Nebula</span>
+                </div>
+                
+                <div class="hotspot" id="nav-growth" style="top: 15%; left: 45%;">
+                    <span class="hotspot-label">Eternal Growth</span>
+                </div>
+            </div>
+        </div>
 
         <div id="memory-galaxy-screen" class="screen"><div class="galaxy-bg"><div class="star-layer layer-1"></div><div class="star-layer layer-2"></div></div><div class="screen-header"><h2 class="glow-text" style="font-size: 1.5rem;">Memory Galaxy</h2><p class="subtitle" style="margin-bottom: 0;">Your constellation of moments</p></div><div id="star-container" class="star-container"></div><button class="fab-btn" onclick="openMemoryCreator()">+</button><div id="memory-modal" class="modal-overlay"><div class="glass-box modal-box"><h3 class="glow-text" style="font-size: 1.3rem;">Capture a Moment</h3><form id="memory-form" onsubmit="saveMemory(event)"><input type="text" id="memory-title" class="input-field" placeholder="Name this star" required><textarea id="memory-desc" class="input-field" placeholder="What happened?" rows="3" required></textarea><div style="display: flex; gap: 10px;"><button type="submit" class="btn-primary">Save Star</button><button type="button" class="btn-secondary" onclick="closeMemoryCreator()">Cancel</button></div></form></div></div></div>
 
