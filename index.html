@@ -8,14 +8,22 @@
 </head>
 <body>
     <div id="app-container">
-        <div id="splash-screen" class="screen active"><h1>QUEENTRESS</h1></div>
+        <div id="splash-screen" class="screen active">
+            <h1 style="text-shadow: 0 0 15px #f7a8b8;">QUEENTRESS</h1>
+        </div>
+
+        <div id="welcome-screen" class="screen">
+            <div class="glass-box">
+                <h2>Welcome to Queentress</h2>
+                <button class="btn-primary" onclick="showScreen('profile-setup-screen')">Enter Universe</button>
+            </div>
+        </div>
 
         <div id="profile-setup-screen" class="screen">
             <div class="glass-box">
                 <h2>Shape Your Universe</h2>
                 <form onsubmit="event.preventDefault(); showScreen('universe-screen'); document.getElementById('main-bottom-nav').style.display = 'flex';">
                     <input type="text" class="input-field" placeholder="Cosmic Name" required>
-                    <input type="date" class="input-field" required>
                     <button type="submit" class="btn-primary">Ignite Universe</button>
                 </form>
             </div>
@@ -23,16 +31,16 @@
 
         <div id="universe-screen" class="screen">
             <div class="map-container">
-                <img src="assets/images/universe-bg.jpg" alt="Map" class="interactive-map">
-                <div class="hotspot" style="top: 35%; left: 20%;" onclick="alert('Coming Soon')"></div>
+                <img src="assets/images/universe-bg.jpg" class="interactive-map">
             </div>
         </div>
 
         <nav class="bottom-nav" id="main-bottom-nav" style="display: none;">
             <div onclick="showScreen('universe-screen')">🌌 Universe</div>
-            <div onclick="alert('Full Version')">⭐ Memories</div>
+            <div onclick="alert('Coming Soon')">⭐ Memories</div>
         </nav>
     </div>
+
     <script src="core/ui_manager.js"></script>
     <script src="app.js"></script>
 </body>
