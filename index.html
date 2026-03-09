@@ -10,7 +10,6 @@
     <div id="app-container">
         <div id="splash-screen" class="screen active">
             <h1 class="glow-text">QUEENTRESS</h1>
-            <div class="loading-pulse"></div>
         </div>
 
         <div id="profile-setup-screen" class="screen">
@@ -27,21 +26,20 @@
         <div id="universe-screen" class="screen">
             <div class="map-container">
                 <img src="assets/icons/universe-bg.jpg" alt="Universe Map" class="interactive-map">
-                <div class="hotspot" style="top: 35%; left: 20%;" onclick="alert('Memory Galaxy Coming Soon!')">
+                <div class="hotspot" style="top: 35%; left: 20%;" onclick="alert('Coming Soon')">
                     <span class="hotspot-label">Memories</span>
                 </div>
-                <div class="hotspot" style="top: 30%; left: 70%;" onclick="alert('Time Vault Coming Soon!')">
+                <div class="hotspot" style="top: 30%; left: 70%;" onclick="alert('Coming Soon')">
                     <span class="hotspot-label">Time Vault</span>
                 </div>
             </div>
         </div>
 
         <nav class="bottom-nav" id="main-bottom-nav" style="display: none;">
-            <div class="nav-item" onclick="showScreen('universe-screen')">🌌 Universe</div>
-            <div class="nav-item" onclick="alert('Full Version Required')">⭐ Memories</div>
+            <div onclick="showScreen('universe-screen')">🌌 Universe</div>
+            <div onclick="alert('Full Version Only')">⭐ Memories</div>
         </nav>
     </div>
-
     <script src="core/ui_manager.js"></script>
     <script src="app.js"></script>
 </body>
