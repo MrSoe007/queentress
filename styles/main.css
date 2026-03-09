@@ -63,3 +63,43 @@ html, body {
     border-radius: 50%; margin: 20px auto 0 auto;
     box-shadow: 0 0 10px var(--accent-color); animation: pulse 1.5s infinite;
 }
+/* --- Interactive Map Menu Styles --- */
+.map-container {
+    width: 100vw;
+    height: 100dvh;
+    overflow: auto; /* ဘယ်ညာအထက်အောက် ပွတ်ဆွဲလို့ရအောင် */
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+.interactive-map {
+    width: 250vw; /* ဖုန်းစခရင်ထက် ၂.၅ ဆ ပိုကြီးအောင်လုပ်ထားသည် */
+    min-width: 1000px;
+    height: auto;
+    display: block;
+}
+
+/* နှိပ်လို့ရမည့် နေရာလေးများ (Hotspots) */
+.hotspot {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--glow-color);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px var(--glow-color);
+    animation: pulse 2s infinite;
+}
+
+.hotspot-label {
+    position: absolute;
+    bottom: -30px;
+    color: white;
+    font-size: 12px;
+    white-space: nowrap;
+    text-shadow: 0 0 5px black;
+}
