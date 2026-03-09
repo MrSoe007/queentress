@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
-        const screens = document.querySelectorAll('.screen');
-        screens.forEach(s => s.classList.remove('active'));
-        document.getElementById('profile-setup-screen').classList.add('active');
+        showScreen('profile-setup-screen');
     }, 3000);
 });
