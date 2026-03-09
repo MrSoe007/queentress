@@ -1,0 +1,49 @@
+:root {
+    --bg-deep-space: #050510;
+    --text-primary: #ffffff;
+    --glow-color: #b388eb;
+    --accent-color: #f7a8b8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+html, body {
+    background-color: var(--bg-deep-space); color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    width: 100%; height: 100dvh; overflow: hidden;
+}
+
+#app-container { width: 100%; height: 100%; position: relative; }
+
+.screen {
+    display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0;
+    overflow-y: auto; overflow-x: hidden;
+    padding: 120px 20px 120px 20px; 
+}
+.screen.active { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
+#splash-screen.active { justify-content: center; padding-top: 0; }
+#universe-dashboard-screen.active { display: block; }
+
+.bottom-nav {
+    position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; 
+    background: rgba(5, 5, 16, 0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); 
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    display: flex; justify-content: space-around; align-items: center; 
+    padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 1000; 
+}
+.nav-hidden { display: none !important; }
+
+.nav-item { display: flex; flex-direction: column; align-items: center; color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: all 0.3s ease; }
+.nav-icon { font-size: 1.5rem; margin-bottom: 5px; } .nav-label { font-size: 0.7rem; }
+.nav-item.active { color: var(--glow-color); transform: translateY(-5px); }
+.nav-item.active .nav-icon { text-shadow: 0 0 10px var(--glow-color); }
+
+@keyframes fadeIn { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { transform: scale(0.8); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } }
+
+/* Splash Screen Loading Effect Fix */
+.loading-pulse {
+    width: 15px; height: 15px; background-color: var(--accent-color);
+    border-radius: 50%; margin: 20px auto 0 auto;
+    box-shadow: 0 0 10px var(--accent-color); animation: pulse 1.5s infinite;
+}
