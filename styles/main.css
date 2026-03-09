@@ -1,112 +1,35 @@
 :root {
     --bg-deep-space: #050510;
-    --text-primary: #ffffff;
-    --glow-color: #b388eb;
-    --accent-color: #f7a8b8;
+    --glow-color: #f7a8b8;
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
 
 html, body {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    background-color: #050510;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: white;
-    overflow-x: hidden;
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background-color: var(--bg-deep-space);
+    color: white; font-family: sans-serif;
+    overflow: hidden;
 }
 
-/* iOS အချိုးအစားမှန်ရန် အသုံးပြုသောနည်းလမ်း */
 body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* folder နာမည်ကို icons လို့ အမှန်ပြင်ထားသည် */
+    content: ""; position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
     background-image: url('../assets/icons/moon-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover; background-position: center;
     z-index: -1;
 }
 
+.screen { display: none; width: 100%; height: 100vh; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.screen.active { display: flex; }
 
-#app-container { width: 100%; height: 100%; position: relative; }
+.glass-box { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 20px; width: 80%; }
+.input-field { width: 100%; margin: 10px 0; padding: 10px; border-radius: 10px; border: none; }
+.btn-primary { background: linear-gradient(45deg, #f7a8b8, #ffc3a0); border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; }
 
-.screen {
-    display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0;
-    overflow-y: auto; overflow-x: hidden;
-    padding: 120px 20px 120px 20px; 
-}
-.screen.active { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
-#splash-screen.active { justify-content: center; padding-top: 0; }
-#universe-dashboard-screen.active { display: block; }
+.map-container { width: 100vw; height: 100vh; overflow: auto; position: relative; }
+.interactive-map { width: 200vw; height: auto; }
+.hotspot { position: absolute; width: 30px; height: 30px; background: white; border-radius: 50%; box-shadow: 0 0 15px white; cursor: pointer; }
+.hotspot-label { position: absolute; top: 35px; left: -20px; white-space: nowrap; }
 
-.bottom-nav {
-    position: fixed; bottom: 0; left: 0; width: 100%; height: 80px; 
-    background: rgba(5, 5, 16, 0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); 
-    border-top: 1px solid rgba(255, 255, 255, 0.1); 
-    display: flex; justify-content: space-around; align-items: center; 
-    padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 1000; 
-}
-.nav-hidden { display: none !important; }
-
-.nav-item { display: flex; flex-direction: column; align-items: center; color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: all 0.3s ease; }
-.nav-icon { font-size: 1.5rem; margin-bottom: 5px; } .nav-label { font-size: 0.7rem; }
-.nav-item.active { color: var(--glow-color); transform: translateY(-5px); }
-.nav-item.active .nav-icon { text-shadow: 0 0 10px var(--glow-color); }
-
-@keyframes fadeIn { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
-@keyframes pulse { 0%, 100% { transform: scale(0.8); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } }
-
-/* Splash Screen Loading Effect Fix */
-.loading-pulse {
-    width: 15px; height: 15px; background-color: var(--accent-color);
-    border-radius: 50%; margin: 20px auto 0 auto;
-    box-shadow: 0 0 10px var(--accent-color); animation: pulse 1.5s infinite;
-}
-/* --- Interactive Map Menu Styles --- */
-.map-container {
-    width: 100vw;
-    height: 100dvh;
-    overflow: auto; /* ဘယ်ညာအထက်အောက် ပွတ်ဆွဲလို့ရအောင် */
-    position: relative;
-    scroll-behavior: smooth;
-}
-
-.interactive-map {
-    width: 250vw; /* ဖုန်းစခရင်ထက် ၂.၅ ဆ ပိုကြီးအောင်လုပ်ထားသည် */
-    min-width: 1000px;
-    height: auto;
-    display: block;
-}
-
-/* နှိပ်လို့ရမည့် နေရာလေးများ (Hotspots) */
-.hotspot {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid var(--glow-color);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 15px var(--glow-color);
-    animation: pulse 2s infinite;
-}
-
-.hotspot-label {
-    position: absolute;
-    bottom: -30px;
-    color: white;
-    font-size: 12px;
-    white-space: nowrap;
-    text-shadow: 0 0 5px black;
-}
+.bottom-nav { position: fixed; bottom: 0; width: 100%; display: flex; background: rgba(10, 10, 30, 0.9); padding: 15px 0; justify-content: space-around; }
+.nav-hidden { display: none; }
