@@ -1,0 +1,18 @@
+.galaxy-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden; background: radial-gradient(circle at center, #1a0b2e 0%, var(--bg-deep-space) 100%); }
+.star-layer { position: absolute; width: 200%; height: 200%; background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><circle cx="10" cy="10" r="1" fill="white" opacity="0.8"/><circle cx="150" cy="80" r="1.5" fill="white" opacity="0.6"/><circle cx="80" cy="180" r="0.5" fill="white" opacity="0.4"/></svg>') repeat; top: -50%; left: -50%; animation: rotateStars 100s linear infinite; pointer-events: none;}
+.layer-2 { animation: rotateStars 150s linear infinite reverse; transform: scale(1.5); opacity: 0.5; }
+.layer-3 { animation: rotateStars 200s linear infinite; transform: scale(2); opacity: 0.3; }
+@keyframes rotateStars { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.star-container { position: relative; width: 100%; height: 100%; overflow: hidden; z-index: 5; }
+
+.memory-star { 
+    position: absolute; font-size: 25px !important; color: #fff !important; cursor: pointer; 
+    text-shadow: 0 0 10px #fff, 0 0 20px var(--glow-color); animation: twinkle 2s infinite alternate; 
+    background: transparent !important; border-radius: 0 !important; width: auto !important; height: auto !important;
+}
+
+/* User တောင်းဆိုချက်အရ ကြယ်အောက်က စာသားကို ဖျောက်ထားပါသည် */
+.memory-star-label { display: none !important; }
+
+@keyframes twinkle { 0% { opacity: 0.5; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.2); } }
