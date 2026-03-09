@@ -1,43 +1,40 @@
 :root {
-    --bg-deep-space: #050510;
-    --glow-color: #f7a8b8;
+    --bg-color: #050510;
+    --glow: #f7a8b8;
 }
 
 html, body {
     margin: 0; padding: 0;
     width: 100vw; height: 100vh;
-    background-color: var(--bg-deep-space);
-    color: white; font-family: -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: white; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: hidden;
 }
 
-/* iOS Background Fix - icons folder path */
+/* iOS Safari & All Devices Background Fix */
 body::before {
-    content: ""; position: fixed; top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-image: url('../assets/icons/moon-bg.jpg');
-    background-size: cover; background-position: center;
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    /* မင်းရဲ့ ပုံရှိတဲ့ icons folder ကို အတိအကျ ညွှန်းထားပါတယ် */
+    background: url('../assets/icons/moon-bg.jpg') no-repeat center center;
+    background-size: cover;
     z-index: -1;
 }
 
-.screen { display: none; width: 100%; height: 100vh; flex-direction: column; align-items: center; justify-content: center; }
+.screen { display: none; width: 100%; height: 100%; flex-direction: column; align-items: center; justify-content: center; position: absolute; }
 .screen.active { display: flex; }
 
-.glass-box { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); padding: 30px; border-radius: 20px; width: 85%; max-width: 400px; box-sizing: border-box; }
-.input-field { width: 100%; margin: 10px 0; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: white; box-sizing: border-box; }
-.btn-primary { background: linear-gradient(45deg, #f7a8b8, #ffc3a0); border: none; padding: 15px; border-radius: 30px; color: #050510; font-weight: bold; width: 100%; margin-top: 15px; }
+.glass-box { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 30px; border-radius: 20px; width: 85%; max-width: 350px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+.input-field { width: 100%; margin: 10px 0; padding: 12px; border-radius: 10px; border: none; background: rgba(0,0,0,0.5); color: white; box-sizing: border-box; }
+.btn-primary { background: linear-gradient(45deg, #f7a8b8, #ffc3a0); border: none; padding: 15px; width: 100%; border-radius: 30px; font-weight: bold; color: #050510; cursor: pointer; margin-top: 15px; }
 
-/* Universe Map Styles */
+/* Interactive Map Menu */
 .map-container { width: 100vw; height: 100vh; overflow: auto; position: relative; }
-.interactive-map { height: 100%; width: auto; min-width: 200vw; } /* မြေပုံကြီးကို ဘယ်ညာရွှေ့လို့ရအောင် */
+.interactive-map { height: 100%; width: auto; min-width: 200vw; }
+.hotspot { position: absolute; width: 45px; height: 45px; background: white; border-radius: 50%; box-shadow: 0 0 20px white; }
+.hotspot-label { position: absolute; top: 50px; left: -10px; white-space: nowrap; font-size: 14px; text-shadow: 0 0 5px black; }
 
-.hotspot { position: absolute; width: 45px; height: 45px; background: white; border-radius: 50%; box-shadow: 0 0 25px white; cursor: pointer; animation: pulse 2s infinite; }
-.hotspot-label { position: absolute; top: 50px; left: -10px; white-space: nowrap; text-shadow: 0 0 10px black; }
-
-@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }
-
-.bottom-nav { position: fixed; bottom: 0; width: 100%; background: rgba(10, 10, 30, 0.9); padding: 20px 0; justify-content: space-around; display: flex; }
-.nav-item { cursor: pointer; font-size: 14px; }
-.glow-text { text-shadow: 0 0 15px var(--glow-color); margin-bottom: 25px; }
-.loading-pulse { width: 40px; height: 40px; border: 3px solid var(--glow-color); border-radius: 50%; border-top-color: transparent; animation: spin 1s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
+.bottom-nav { position: fixed; bottom: 0; width: 100%; background: rgba(10, 10, 30, 0.9); padding: 20px 0; display: flex; justify-content: space-around; border-top: 1px solid rgba(255,255,255,0.1); }
+.glow-text { text-shadow: 0 0 15px var(--glow); margin-bottom: 25px; }
