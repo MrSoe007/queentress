@@ -10,17 +10,27 @@
 html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     background-color: var(--bg-deep-space);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-primary);
+}
+
+/* iOS & Mobile Background Fix */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-image: url('../assets/images/moon-bg.jpg');
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    width: 100vw;
-    height: 100vh; /* Fallback */
-    height: 100dvh; /* Mobile Fix */
-    overflow: hidden;
-    color: var(--text-primary);
+    z-index: -1;
 }
 
 #app-container { width: 100%; height: 100%; position: relative; }
