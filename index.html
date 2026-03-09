@@ -9,12 +9,12 @@
 <body>
     <div id="app-container">
         <div id="splash-screen" class="screen active">
-            <h1 style="text-shadow: 0 0 15px #f7a8b8;">QUEENTRESS</h1>
+            <h1 style="text-shadow: 0 0 15px #f7a8b8; font-size: 2.5rem;">QUEENTRESS</h1>
         </div>
 
         <div id="welcome-screen" class="screen">
             <div class="glass-box">
-                <h2>Welcome to Queentress</h2>
+                <h2>Welcome Traveler</h2>
                 <button class="btn-primary" onclick="showScreen('profile-setup-screen')">Enter Universe</button>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="glass-box">
                 <h2>Shape Your Universe</h2>
                 <form onsubmit="event.preventDefault(); showScreen('universe-screen'); document.getElementById('main-bottom-nav').style.display = 'flex';">
-                    <input type="text" class="input-field" placeholder="Cosmic Name" required>
+                    <input type="text" style="width:100%; padding:12px; margin:15px 0; border-radius:10px; border:none; background:rgba(0,0,0,0.5); color:white;" placeholder="Cosmic Name" required>
                     <button type="submit" class="btn-primary">Ignite Universe</button>
                 </form>
             </div>
@@ -36,8 +36,8 @@
         </div>
 
         <nav class="bottom-nav" id="main-bottom-nav" style="display: none;">
-            <div onclick="showScreen('universe-screen')">🌌 Universe</div>
-            <div onclick="alert('Coming Soon')">⭐ Memories</div>
+            <div onclick="showScreen('universe-screen')" style="cursor:pointer">🌌 Universe</div>
+            <div onclick="alert('Full Version Coming Soon')" style="cursor:pointer">⭐ Memories</div>
         </nav>
     </div>
 
