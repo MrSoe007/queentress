@@ -11,19 +11,30 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh; /* Fallback */
-    height: 100dvh; /* Mobile Fix */
-    background-color: var(--bg-deep-space);
-    /* နေရာအမှန်ဖြစ်သော icons folder ကို ချိတ်ဆက်ထားသည် */
+    height: 100vh;
+    height: 100dvh;
+    background-color: #050510;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* iOS အချိုးအစားမှန်ရန် အသုံးပြုသောနည်းလမ်း */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* folder နာမည်ကို icons လို့ အမှန်ပြင်ထားသည် */
     background-image: url('../assets/icons/moon-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll; /* iOS Size ကြီးသွားခြင်းကို ကာကွယ်ရန် */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: var(--text-primary);
-    overflow-x: hidden;
+    z-index: -1;
 }
+
 
 #app-container { width: 100%; height: 100%; position: relative; }
 
